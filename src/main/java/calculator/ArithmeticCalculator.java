@@ -2,9 +2,12 @@ package calculator;
 
 import calculator.operator.*;
 
+import java.util.Queue;
 import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
-public class ArithmeticCalculator extends Calculator {
+public class ArithmeticCalculator <T extends Number> extends Calculator {
 
     private static final Set<Character> allowed = Set.of('+', '-', '/', '*', '%');
 
@@ -12,7 +15,7 @@ public class ArithmeticCalculator extends Calculator {
         super();
     }
 
-    public <T> Object calculate(double num1, double num2, char operation) {
+    public Object calculate(double num1, double num2, char operation) {
 
 
         if (!allowed.contains(operation)) {
@@ -25,9 +28,16 @@ public class ArithmeticCalculator extends Calculator {
 
         return (Object) finalResult;
     }
+    public void getBigger(double num ) {
 
+        Queue<T> list = getList();
+        list.stream()
+                .filter(x -> x.doubleValue() > num)
+                .forEach(x -> System.out.print(x + " "));
+        System.out.println();
+    }
 
-    private <T> T convert(double num) {
+    private T convert(double num) {
 
         if (num % 1 == 0) {
             return (T) Integer.valueOf((int) num);
@@ -35,4 +45,6 @@ public class ArithmeticCalculator extends Calculator {
             return (T) Double.valueOf(num);
         }
     }
+
+
 }

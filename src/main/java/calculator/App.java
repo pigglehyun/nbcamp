@@ -27,6 +27,11 @@ public class App {
                     //3.2
                     System.out.println("결과: " + arithmeticCalculator.calculate(firstNum, secondNum, operation));
 
+                    //3.3
+                    System.out.print("숫자를 입력하세요 : ");
+                    double num = sc.nextDouble();
+                    arithmeticCalculator.getBigger(num);
+
                     //1.7
                     System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
                     if ((sc.next()).equals("remove")) {
