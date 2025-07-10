@@ -6,7 +6,9 @@ import java.util.Queue;
 public class Calculator {
 
     //2.1
-    private Queue<Integer> list = new LinkedList<>();
+    private Queue<Integer> list = new LinkedList<>() ;
+
+
 
     public int calculate(int num1, int num2, char operation) {
         if (operation != '+' && operation != '-' && operation != '*' && operation != '/') {
@@ -32,7 +34,15 @@ public class Calculator {
     public void removeResult(){
         list.poll();
     }
-    
+
+    //2.5
+    public void inquiryResults() {
+        for (int l : list) {
+            System.out.print(l + " ");
+        }
+        System.out.println();
+    }
+
     //2.3
     public Queue<Integer> getList() {
         return list;

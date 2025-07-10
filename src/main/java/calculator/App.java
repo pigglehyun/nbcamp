@@ -39,6 +39,7 @@ public class App {
                 //1.8
                 System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
                 if ((sc.next()).equals("inquiry")) {
+                    calculator.inquiryResults(); // 2.5
                     for (int l : list) {
                         System.out.print(l + " ");
                     }
