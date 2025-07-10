@@ -1,15 +1,14 @@
 package calculator;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 public class App {
     public static void main(String[] args) {
         try{
             boolean go = true ;
-            int index = 0;
-            int[] list = new int[10];
+            //int index = 0;
+            //int[] list = new int[10];
+            Queue<Integer> list = new LinkedList<>() ;
             while ( go ) {
                 Scanner sc = new Scanner(System.in);
                 //1.1
@@ -37,17 +36,12 @@ public class App {
                     }
                 }
                 System.out.println("결과: " + result);
-                //1.6
-                if( index >= 10 ) {
-                    for (int i = 1; i < 10; i++) {
-                        list[i - 1] = list[i];
-                    }
-                    list[9] = result;
-                }else {
-                    //1.5
-                    list[index] = result;
-                    index++;
+                //1.7
+                System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
+                if ((sc.next()).equals("remove")) {
+                    list.poll();
                 }
+                list.add(result);
                 //1.4
                 System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
                 if ((sc.next()).equals("exit")) {
