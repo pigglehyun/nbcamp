@@ -6,13 +6,13 @@ import java.util.*;
 public class App {
     public static void main(String[] args) {
         boolean go = true;
-        //int index = 0;
-        //int[] list = new int[10];
+        Calculator calculator = new Calculator();
+        Scanner sc = new Scanner(System.in);
         Queue<Integer> list = new LinkedList<>();
         int result = 0;
         while (go) {
             try {
-                Scanner sc = new Scanner(System.in);
+
                 //1.1
                 System.out.print("첫 번째 숫자를 입력하세요: ");
                 int firstNum = sc.nextInt();
@@ -23,16 +23,17 @@ public class App {
                 char operation;
                 operation = sc.next().charAt(0);
                 //2.2
-                Calculator calculator = new Calculator();
-                calculator.calculate(firstNum, secondNum, operation);
+
+                result = calculator.calculate(firstNum, secondNum, operation);
                 //2.3
-                result = calculator.getResult();
+
                 System.out.println("결과: " + result);
 
                 //1.7
                 System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
                 if ((sc.next()).equals("remove")) {
                     list.poll();
+                    calculator.removeResult(); // 2.4
                 }
                 list.add(result);
                 //1.8

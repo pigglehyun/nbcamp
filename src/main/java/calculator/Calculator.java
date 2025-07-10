@@ -1,14 +1,18 @@
 package calculator;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class Calculator {
 
     //2.1
-    private int result;
+    private Queue<Integer> list = new LinkedList<>();
 
-    public void calculate(int num1, int num2, char operation) {
+    public int calculate(int num1, int num2, char operation) {
         if (operation != '+' && operation != '-' && operation != '*' && operation != '/') {
             throw new IllegalArgumentException();
         }
+        int result = 0;
         switch (operation) {
             case '+' -> result = num1 + num2;
             case '-' -> result = num1 - num2;
@@ -20,14 +24,21 @@ public class Calculator {
                 result = num1 / num2;
             }
         }
-    }
-
-    //2.3
-    public int getResult() {
+        list.add(result);
         return result;
     }
 
-    public void setResult(int result) {
-        this.result = result;
+    //2.4
+    public void removeResult(){
+        list.poll();
+    }
+    
+    //2.3
+    public Queue<Integer> getList() {
+        return list;
+    }
+
+    public void setResult(Queue<Integer> list) {
+        this.list = list;
     }
 }
