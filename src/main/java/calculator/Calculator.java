@@ -6,8 +6,11 @@ import java.util.Queue;
 public class Calculator {
 
     //2.1
-    private Queue<Integer> list = new LinkedList<>() ;
-
+    private Queue<Integer> list ;
+    //2.6
+    public Calculator() {
+        list = new LinkedList<>();
+    }
 
 
     public int calculate(int num1, int num2, char operation) {
