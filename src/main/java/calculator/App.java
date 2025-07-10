@@ -1,25 +1,29 @@
 package calculator;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
         try{
             boolean go = true ;
+            int index = 0;
+            int[] list = new int[10];
             while ( go ) {
                 Scanner sc = new Scanner(System.in);
                 //1.1
                 System.out.print("첫 번째 숫자를 입력하세요: ");
-                int firstNum ;
+                int firstNum;
                 firstNum = sc.nextInt();
                 System.out.print("두 번째 숫자를 입력하세요: ");
-                int secondNum ;
+                int secondNum;
                 secondNum = sc.nextInt();
                 //1.2
                 System.out.print("사칙연산 기호를 입력하세요: ");
                 char operation;
                 operation = sc.next().charAt(0);
-
+                //1.3
                 int result = 0;
                 switch (operation) {
                     case '+' -> result = firstNum + secondNum;
@@ -33,14 +37,15 @@ public class App {
                     }
                 }
                 System.out.println("결과: " + result);
-
+                //1.5
+                list[index] = result;
+                index++;
+                //1.4
                 System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
-                if ( (sc.next()).equals("exit") ) {
+                if ((sc.next()).equals("exit")) {
                     go = false;
                 }
             }
-
-
         } catch ( ArithmeticException e) {
             System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
         }
