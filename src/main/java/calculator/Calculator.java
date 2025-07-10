@@ -3,8 +3,8 @@ package calculator;
 public class Calculator {
 
     //2.1
+    int result ;
     public int calculate(int num1, int num2, char operation) {
-        int result = 0 ;
         try {
             switch (operation) {
                 case '+' -> result = num1 + num2;
