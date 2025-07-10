@@ -10,30 +10,46 @@ public class App {
         Scanner sc = new Scanner(System.in);
         while (go) {
             try {
-                //1.1
-                System.out.print("첫 번째 숫자를 입력하세요: ");
-                int firstNum = sc.nextInt();
-                System.out.print("두 번째 숫자를 입력하세요: ");
-                int secondNum = sc.nextInt();
-                //1.2
-                System.out.print("사칙연산 기호를 입력하세요: ");
-                char operation;
-                operation = sc.next().charAt(0);
-                //2.2
-                int result = calculator.calculate(firstNum, secondNum, operation);
-                //2.3
-                System.out.println("결과: " + result);
+                System.out.print("사칙연산 or 원 ? ");
+                String decide = sc.next();
 
-                //1.7
-                System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
-                if ((sc.next()).equals("remove")) {
-                    calculator.removeResult(); // 2.4
+                if (decide.equals("사칙연산")) {
+                    //1.1
+                    System.out.print("첫 번째 숫자를 입력하세요: ");
+                    int firstNum = sc.nextInt();
+                    System.out.print("두 번째 숫자를 입력하세요: ");
+                    int secondNum = sc.nextInt();
+                    //1.2
+                    System.out.print("사칙연산 기호를 입력하세요: ");
+                    char operation;
+                    operation = sc.next().charAt(0);
+                    //2.2
+                    int result = calculator.calculate(firstNum, secondNum, operation);
+                    //2.3
+                    System.out.println("결과: " + result);
+
+                    //1.7
+                    System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
+                    if ((sc.next()).equals("remove")) {
+                        calculator.removeResult(); // 2.4
+                    }
+                    //1.8
+                    System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
+                    if ((sc.next()).equals("inquiry")) {
+                        calculator.inquiryResults(); // 2.5
+                    }
+                } else if (decide.equals("원")) {
+                    System.out.print("원의 반지름을 입력하세요: ");
+                    int radius = sc.nextInt();
+                    double result = calculator.calculateCircleArea(radius);
+                    System.out.println("결과: " + result);
+                    //1.8
+                    System.out.println("저장된 연산결과");
+                    calculator.inquiryCircleResults(); // 2.5
+                } else {
+                    throw new InputMismatchException();
                 }
-                //1.8
-                System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
-                if ((sc.next()).equals("inquiry")) {
-                    calculator.inquiryResults(); // 2.5
-                }
+
                 //1.4
                 System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
                 if ((sc.next()).equals("exit")) {
@@ -41,10 +57,13 @@ public class App {
                 }
             } catch (ArithmeticException e) {
                 System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
+                sc.nextLine(); // 버퍼 비우기
             } catch (IllegalArgumentException e) {
                 System.out.println("연산자는 +, -, *, / 로 입력하세요.");
+                sc.nextLine(); // 버퍼 비우기
             } catch (InputMismatchException e) {
-                System.out.println("숫자를 입력하세요.");
+                System.out.println("잘못된 입력입니다.");
+                sc.nextLine(); // 버퍼 비우기
             }
 
         }
