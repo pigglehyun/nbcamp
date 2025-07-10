@@ -1,33 +1,36 @@
 package calculator.operator;
 
+import java.lang.reflect.GenericArrayType;
+
 public enum OperatorType {
 
-    ADD{
+    ADD {
         @Override
         public double operate(double num1, double num2) {
-            return num1 + num2;
+            return
+                    num1 + num2;
         }
     },
-    SUBTRACT{
+    SUBTRACT {
         @Override
         public double operate(double num1, double num2) {
             return num1 - num2;
         }
     },
-    DIVIDE{
+    DIVIDE {
         @Override
         public double operate(double num1, double num2) {
             if (num2 == 0) throw new ArithmeticException();
             return num1 / num2;
         }
     },
-    MULTIPLY{
+    MULTIPLY {
         @Override
         public double operate(double num1, double num2) {
             return num1 * num2;
         }
     },
-    MOD{
+    MOD {
         @Override
         public double operate(double num1, double num2) {
             return num1 % num2;

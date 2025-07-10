@@ -4,9 +4,9 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
 
-class Calculator {
+class Calculator<T extends Number> {
 
-    private Queue<Double> list;
+    private Queue<T> list;
 
 
     public Calculator() {
@@ -18,17 +18,17 @@ class Calculator {
     }
 
     public void inquiryResults() {
-        for (double l : list) {
+        for (T l : list) {
             System.out.print(l + " ");
         }
         System.out.println();
     }
 
-    public Queue<Double> getList() {
+    public Queue<T> getList() {
         return list;
     }
 
-    public void setList(Queue<Double> list) {
+    public void setList(Queue<T> list) {
         this.list = list;
     }
 

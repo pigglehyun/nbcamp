@@ -17,17 +17,15 @@ public class App {
                 if (decide.equals("사칙연산")) {
                     //1.1
                     System.out.print("첫 번째 숫자를 입력하세요: ");
-                    int firstNum = sc.nextInt();
+                    double firstNum = sc.nextDouble();
                     System.out.print("두 번째 숫자를 입력하세요: ");
-                    int secondNum = sc.nextInt();
+                    double secondNum = sc.nextDouble();
                     //1.2
                     System.out.print("사칙연산 기호를 입력하세요: ");
-                    char operation;
-                    operation = sc.next().charAt(0);
-                    //2.2
-                    double result = arithmeticCalculator.calculate(firstNum, secondNum, operation);
-                    //2.3
-                    System.out.println("결과: " + result);
+                    char operation = sc.next().charAt(0);
+
+                    //3.2
+                    System.out.println("결과: " + arithmeticCalculator.calculate(firstNum, secondNum, operation));
 
                     //1.7
                     System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
@@ -56,6 +54,8 @@ public class App {
                 if ((sc.next()).equals("exit")) {
                     go = false;
                 }
+
+
             } catch (ArithmeticException e) {
                 System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
                 sc.nextLine(); // 버퍼 비우기
