@@ -8,11 +8,8 @@ public class App {
         boolean go = true;
         Calculator calculator = new Calculator();
         Scanner sc = new Scanner(System.in);
-        Queue<Integer> list = new LinkedList<>();
-        int result = 0;
         while (go) {
             try {
-
                 //1.1
                 System.out.print("첫 번째 숫자를 입력하세요: ");
                 int firstNum = sc.nextInt();
@@ -23,27 +20,19 @@ public class App {
                 char operation;
                 operation = sc.next().charAt(0);
                 //2.2
-
-                result = calculator.calculate(firstNum, secondNum, operation);
+                int result = calculator.calculate(firstNum, secondNum, operation);
                 //2.3
-
                 System.out.println("결과: " + result);
 
                 //1.7
                 System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
                 if ((sc.next()).equals("remove")) {
-                    list.poll();
                     calculator.removeResult(); // 2.4
                 }
-                list.add(result);
                 //1.8
                 System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
                 if ((sc.next()).equals("inquiry")) {
                     calculator.inquiryResults(); // 2.5
-                    for (int l : list) {
-                        System.out.print(l + " ");
-                    }
-                    System.out.println();
                 }
                 //1.4
                 System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
