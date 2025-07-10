@@ -37,9 +37,17 @@ public class App {
                     }
                 }
                 System.out.println("결과: " + result);
-                //1.5
-                list[index] = result;
-                index++;
+                //1.6
+                if( index >= 10 ) {
+                    for (int i = 1; i < 10; i++) {
+                        list[i - 1] = list[i];
+                    }
+                    list[9] = result;
+                }else {
+                    //1.5
+                    list[index] = result;
+                    index++;
+                }
                 //1.4
                 System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
                 if ((sc.next()).equals("exit")) {
