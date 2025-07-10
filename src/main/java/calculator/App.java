@@ -6,7 +6,8 @@ import java.util.*;
 public class App {
     public static void main(String[] args) {
         boolean go = true;
-        Calculator calculator = new Calculator();
+        ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator();
+        CircleCalculator circleCalculator = new CircleCalculator();
         Scanner sc = new Scanner(System.in);
         while (go) {
             try {
@@ -24,28 +25,28 @@ public class App {
                     char operation;
                     operation = sc.next().charAt(0);
                     //2.2
-                    int result = calculator.calculate(firstNum, secondNum, operation);
+                    double result = arithmeticCalculator.calculate(firstNum, secondNum, operation);
                     //2.3
                     System.out.println("결과: " + result);
 
                     //1.7
                     System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
                     if ((sc.next()).equals("remove")) {
-                        calculator.removeResult(); // 2.4
+                        arithmeticCalculator.removeResult(); // 2.4
                     }
                     //1.8
                     System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
                     if ((sc.next()).equals("inquiry")) {
-                        calculator.inquiryResults(); // 2.5
+                        arithmeticCalculator.inquiryResults(); // 2.5
                     }
                 } else if (decide.equals("원")) {
                     System.out.print("원의 반지름을 입력하세요: ");
                     int radius = sc.nextInt();
-                    double result = calculator.calculateCircleArea(radius);
+                    double result = circleCalculator.calculate(radius);
                     System.out.println("결과: " + result);
                     //1.8
                     System.out.println("저장된 연산결과");
-                    calculator.inquiryCircleResults(); // 2.5
+                    circleCalculator.inquiryResults(); // 2.5
                 } else {
                     throw new InputMismatchException();
                 }
